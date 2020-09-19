@@ -1,0 +1,32 @@
+{
+  "name": "Futbolista",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "operacion",
+      "otherEntityRelationshipName": "futbolista",
+      "relationshipName": "operaciones"
+    }
+  ],
+  "changelogDate": "20200831223019",
+  "entityTableName": "futbolista",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

@@ -51,6 +51,14 @@ public class CacheConfiguration {
             createCache(cm, com.fantasy.tracker2.domain.User.class.getName());
             createCache(cm, com.fantasy.tracker2.domain.Authority.class.getName());
             createCache(cm, com.fantasy.tracker2.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.fantasy.tracker2.domain.Futbolista.class.getName());
+            createCache(cm, com.fantasy.tracker2.domain.Futbolista.class.getName() + ".operaciones");
+            createCache(cm, com.fantasy.tracker2.domain.Liga.class.getName());
+            createCache(cm, com.fantasy.tracker2.domain.Liga.class.getName() + ".operaciones");
+            createCache(cm, com.fantasy.tracker2.domain.Usuario.class.getName());
+            createCache(cm, com.fantasy.tracker2.domain.Usuario.class.getName() + ".deOperaciones");
+            createCache(cm, com.fantasy.tracker2.domain.Usuario.class.getName() + ".aOperaciones");
+            createCache(cm, com.fantasy.tracker2.domain.Operacion.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

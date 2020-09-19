@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="operacion">
+            <h2><span>Operacion</span> {{ operacion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Precio</span></dt>
+                <dd>
+                    <span>{{ operacion.precio }}</span>
+                </dd>
+                <dt><span>Fecha</span></dt>
+                <dd>
+                    <span>{{ operacion.fecha }}</span>
+                </dd>
+                <dt><span>Accion</span></dt>
+                <dd>
+                    <span>{{ operacion.accion }}</span>
+                </dd>
+                <dt><span>Futbolista</span></dt>
+                <dd>
+                    <div *ngIf="operacion.futbolista">
+                        <a [routerLink]="['/futbolista', operacion.futbolista?.id, 'view']">{{ operacion.futbolista?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>De Usuario</span></dt>
+                <dd>
+                    <div *ngIf="operacion.deUsuario">
+                        <a [routerLink]="['/usuario', operacion.deUsuario?.id, 'view']">{{ operacion.deUsuario?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>A Usuario</span></dt>
+                <dd>
+                    <div *ngIf="operacion.aUsuario">
+                        <a [routerLink]="['/usuario', operacion.aUsuario?.id, 'view']">{{ operacion.aUsuario?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Liga</span></dt>
+                <dd>
+                    <div *ngIf="operacion.liga">
+                        <a [routerLink]="['/liga', operacion.liga?.id, 'view']">{{ operacion.liga?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/operacion', operacion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "Usuario",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "operacion",
+      "otherEntityRelationshipName": "deUsuario",
+      "relationshipName": "deOperaciones"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "operacion",
+      "otherEntityRelationshipName": "aUsuario",
+      "relationshipName": "aOperaciones"
+    }
+  ],
+  "changelogDate": "20200831223219",
+  "entityTableName": "usuario",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

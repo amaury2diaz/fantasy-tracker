@@ -1,0 +1,69 @@
+{
+  "name": "Operacion",
+  "fields": [
+    {
+      "fieldName": "precio",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "accion",
+      "fieldType": "AccionEnum",
+      "fieldValues": "FACHO,COMPRA,CESION",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "futbolista",
+      "otherEntityRelationshipName": "operaciones",
+      "relationshipName": "futbolista",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "deOperaciones",
+      "relationshipName": "deUsuario",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "aOperaciones",
+      "relationshipName": "aUsuario",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "liga",
+      "otherEntityRelationshipName": "operaciones",
+      "relationshipName": "liga",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200831223319",
+  "entityTableName": "operacion",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}

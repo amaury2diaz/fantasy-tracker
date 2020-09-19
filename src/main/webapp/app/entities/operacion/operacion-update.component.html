@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-operacion-heading">Create or edit a Operacion</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_precio">Precio</label>
+                    <input type="number" class="form-control" name="precio" id="field_precio"
+                           formControlName="precio"/>
+                    <div *ngIf="editForm.get('precio')!.invalid && (editForm.get('precio')!.dirty || editForm.get('precio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('precio')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('precio')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_accion">Accion</label>
+                    <select class="form-control" name="accion" formControlName="accion" id="field_accion">
+                        <option value="FACHO">FACHO</option>
+                        <option value="COMPRA">COMPRA</option>
+                        <option value="CESION">CESION</option>
+                    </select>
+                    <div *ngIf="editForm.get('accion')!.invalid && (editForm.get('accion')!.dirty || editForm.get('accion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('accion')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_futbolista">Futbolista</label>
+                    <ng-select id="field_futbolista"
+                               name="futbolista"
+                               formControlName="futbolista"
+                               [items]="futbolistas"
+                               bindLabel="nombre"
+                               [minTermLength]="2"
+                               [loading]="futbolistasLoading"
+                               [typeahead]="futbolistasInput$">
+                        <ng-template ng-footer-tmp>
+                            <div (click)="createNewFutbolista()">Create New futbolista</div>
+                        </ng-template>
+                    </ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deUsuario">De Usuario</label>
+                    <ng-select id="field_deUsuario"
+                               name="deUsuario"
+                               formControlName="deUsuario"
+                               [items]="deUsuarios"
+                               bindLabel="nombre"
+                               [minTermLength]="2"
+                               [loading]="deUsuariosLoading"
+                               [typeahead]="deUsuariosInput$">
+                    </ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_aUsuario">A Usuario</label>
+                    <ng-select id="field_aUsuario"
+                               name="aUsuario"
+                               formControlName="aUsuario"
+                               [items]="aUsuarios"
+                               bindLabel="nombre"
+                               [minTermLength]="2"
+                               [loading]="aUsuariosLoading"
+                               [typeahead]="aUsuariosInput$">
+                    </ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_liga">Liga</label>
+                    <select class="form-control" id="field_liga" name="liga" formControlName="liga">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ligaOption.id === editForm.get('liga')!.value?.id ? editForm.get('liga')!.value : ligaOption" *ngFor="let ligaOption of ligas; trackBy: trackById">{{ ligaOption.liga }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

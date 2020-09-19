@@ -1,0 +1,42 @@
+entity Futbolista {
+	nombre String required
+}
+
+entity Liga {
+	liga String required
+}
+
+entity Usuario {
+	nombre String required
+}
+
+entity Operacion {
+	precio Long required
+    fecha Instant required
+    accion AccionEnum required
+}
+
+enum AccionEnum {
+    FACHO, COMPRA, CESION
+}
+
+relationship OneToMany {
+	Futbolista{operaciones} to Operacion{futbolista}
+    Usuario{deOperaciones} to Operacion{deUsuario}
+    Usuario{aOperaciones} to Operacion{aUsuario}
+    Liga{operaciones} to Operacion{liga}
+}
+
+// Set pagination options
+paginate Futbolista, Operacion  with infinite-scroll
+paginate Liga, Usuario with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Accion
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+search all with elasticsearch

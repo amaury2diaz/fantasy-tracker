@@ -1,0 +1,32 @@
+{
+  "name": "Liga",
+  "fields": [
+    {
+      "fieldName": "liga",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "operacion",
+      "otherEntityRelationshipName": "liga",
+      "relationshipName": "operaciones"
+    }
+  ],
+  "changelogDate": "20200831223119",
+  "entityTableName": "liga",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "searchEngine": "elasticsearch"
+}
